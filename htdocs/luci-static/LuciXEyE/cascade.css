@@ -20,6 +20,19 @@ body {
 	
 }
 
+#logo
+{
+	font-size:40px;
+	line-height:60px;
+	width:600px;
+	display:block;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
 #bodydiv {
 	margin:0 70px 0 70px;
 	background:white;
@@ -73,18 +86,6 @@ body {
 .nowrap {
 	white-space: nowrap;
 }
-#logo
-{
-	font-size:40px;
-	line-height:60px;
-	width:600px;
-	display:block;
-}
-
-* {
-	margin: 0;
-	padding: 0;
-}
 
 a img {
 	border: none;
@@ -103,10 +104,9 @@ small {
 ul.tabmenu {
 	width: 200px;
 	height: 100%;
-	float:left;
+	float: left;
 	clear: both;
 	display: block;
-	vertical-align: top;
 	font-size: 12px;
 
 }
@@ -194,8 +194,6 @@ code {
 	background: #EdEdEd;
 	color: #000000;
 	font-size: 100%;
-	align:center;
-
 }
 
 .warning {
@@ -230,7 +228,7 @@ div.hostinfo {
 	margin: 0;
 	padding: 0;
 	width: 626px;
-	display:block;
+	display: block;
 	font-size: 12px;
 	padding: 5px;
 }
@@ -339,11 +337,6 @@ textarea#syslog {
 	font-family: monospace;
 }
 
-#maintr
-{
-	
-
-}
 
 #maincontainer {
 	clear: both;
@@ -483,6 +476,7 @@ td select,
 td input[type=text],
 td input[type=password] {
 	width: 80%;
+	margin: 1px 0;
 }
 
 .cbi-input-user {
@@ -499,7 +493,7 @@ td input[type=password] {
 	text-indent: 17px;
 
 }
-
+.cbi-button-find,
 .cbi-input-find {
 	background: url('../resources/cbi/find.gif') no-repeat scroll 1px center;
 	background-color: inherit;
@@ -507,8 +501,37 @@ td input[type=password] {
 	padding-left: 17px;
 }
 
+.cbi-button-reload,
 .cbi-input-reload {
 	background: url('../resources/cbi/reload.gif') no-repeat scroll 1px center;
+	background-color: inherit;
+	color: #000000;
+	padding-left: 17px;
+}
+
+
+
+.cbi-button-up,
+.cbi-input-up {
+	background: url('../resources/cbi/up.gif') no-repeat scroll 1px center;
+	background-color: inherit;
+	color: #000000;
+	padding-left: 17px;
+}
+
+.cbi-button-down,
+.cbi-input-down {
+	background: url('../resources/cbi/down.gif') no-repeat scroll 1px center;
+	background-color: inherit;
+	color: #000000;
+	padding-left: 17px;
+}
+
+
+
+.cbi-button-edit,
+.cbi-input-edit {
+	background: url('../resources/cbi/edit.gif') no-repeat scroll 1px center;
 	background-color: inherit;
 	color: #000000;
 	padding-left: 17px;
@@ -595,7 +618,9 @@ textarea {
 	margin-bottom: 0.5em;
 }
 
-.cbi-page-actions .cbi-button {
+.cbi-page-actions .cbi-button-apply, 
+.cbi-page-actions .cbi-button-save, 
+.cbi-page-actions .cbi-button-reset {
 	float: right;
 	margin-left: 0.5em;
 }
@@ -678,11 +703,16 @@ div.cbi-value:hover {
 }
 
 .cbi-value-field {
-	float:left;
 	width: 70%;
 	margin-left: 0;
-	padding: 0.25em 0;
+	padding: 0.25em 0 1px;
 }
+
+.cbi-value > .cbi-value-field {
+	float: left;
+}
+
+
 .td.cbi-value-field {
 	width: auto;
 	margin-left: 0;
@@ -755,6 +785,7 @@ div.cbi-section-remove {
 .table.cbi-section-table .th,
 .table.cbi-section-table .td {
 	text-align: center;
+	max-width: 60em;
 }
 
 .tr.cbi-section-table-descr .th {
@@ -801,8 +832,8 @@ div.cbi-error {
 
 ul.cbi-tabmenu {
 	padding: 3px 0;
+	margin-bottom: 1px;
 	margin-left: 0 !important;
-	margin-bottom: -1px;
 	list-style-type: none;
 }
 
@@ -853,32 +884,9 @@ div.cbi-tab-descr {
 	text-align: right;
 }
 
-.zonebadge .cbi-tooltip {
-	padding: 1px;
-	background: inherit;
-	margin: -1.6em 0 0 -5px;
-}
-
-
-.zone-forwards {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.zone-forwards > * {
-	flex: 1 1 45%;
-	padding: 1px;
-}
-
-.zone-forwards > span {
-	flex-basis: 10%;
-	text-align: center;
-}
-
 .zone-forwards .zone-src,
 .zone-forwards .zone-dest {
-	display: flex;
-	flex-direction: column;
+	display: inline-block;
 }
 
 
@@ -931,6 +939,7 @@ div.cbi-tab-descr {
 .ifacebadge, .ifacebox {
 	display: inline-flex;
 	align-content: center;
+	border: 1px solid #ccc;
 	padding: 2px;
 	background: #fff;
 }
@@ -984,7 +993,7 @@ div.cbi-tab-descr {
 .network-status-table {
 	display: flex;
 	flex-wrap: wrap;
-	margin: -.25em -.25em .25em -.25em;
+	margin-top: 1em;
 }
 
 .network-status-table .ifacebox {
