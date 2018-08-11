@@ -9,6 +9,6 @@ include $(TOPDIR)/rules.mk
 LUCI_TITLE:=LuCI xeye theme
 LUCI_DEPENDS:=
 
-include ../../luci.mk
+include ../../../feeds/luci/luci.mk
 
 # call BuildPackage - OpenWrt buildroot signature
