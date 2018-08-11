@@ -21,36 +21,40 @@ Redesigned by XEyE 04/15/2011
 	local ver  = require "luci.version"
 
 	local sysinfo = util.ubus("system", "info") or { }
-	local boardinfo = luci.util.ubus("system", "board") or { }
+	local loadinfo = sysinfo.load or { 0, 0, 0 }
+	local boardinfo = util.ubus("system", "board") or { }
 
-local loadinfo = sysinfo.load or { 0, 0, 0 }
-local request  = require("luci.dispatcher").context.path
-local category = request[1]
-local request2 = require("luci.dispatcher").context.request
-local leaf	 = request2[#request2]
-local tree	 = luci.dispatcher.node()
-local cattree  = category and luci.dispatcher.node(category)
-local node	 = luci.dispatcher.context.dispatched
-local hostname = luci.sys.hostname()
+	local request  = disp.context.path
+	local request2 = disp.context.request
 
-local c = tree
-for i,r in ipairs(request) do
-	if c.nodes and c.nodes[r] then
-		c = c.nodes[r]
-		c._menu_selected = true
+	local category = request[1]
+	local cattree  = category and disp.node(category)
+
+	local leaf = request2[#request2]
+
+	local tree = disp.node()
+	local node = disp.context.dispatched
+
+	local hostname = luci.sys.hostname()
+
+	local c = tree
+	for i, r in ipairs(request) do
+		if c.nodes and c.nodes[r] then
+			c = c.nodes[r]
+			c._menu_selected = true
+		end
 	end
-end
 
-require("luci.i18n").loadc("base")
-require("luci.http").prepare_content("application/xhtml+xml")
+	require("luci.i18n").loadc("base")
+	http.prepare_content("application/xhtml+xml")
 
 
 	local function nodeurl(prefix, name, query)
-		local url = controller .. prefix .. name .. "/"
+		local u = url(prefix, name)
 		if query then
-			url = url .. luci.http.build_querystring(query)
+			u = u .. http.build_querystring(query)
 		end
-		return pcdata(url)
+		return pcdata(u)
 	end
 
 	local function subtree(prefix, node, level)
@@ -108,10 +112,50 @@ require("luci.http").prepare_content("application/xhtml+xml")
 <link rel="stylesheet" type="text/css" media="screen" href="<%=media%>/cascade.css" />
 <% if node and node.css then %><link rel="stylesheet" type="text/css" media="screen" href="<%=resource%>/<%=node.css%>" />
 <% end -%>
-<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="<%=media%>/ie6.css" /><![endif]-->
-<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="<%=media%>/ie7.css" /><![endif]-->
-<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="<%=media%>/ie8.css" /><![endif]-->
+
+<script type="text/javascript" src="<%=resource%>/cbi.js"></script>
 <script type="text/javascript" src="<%=resource%>/xhr.js"></script>
+<script type="text/javascript">//<![CDATA[
+	document.addEventListener('DOMContentLoaded', function() {
+		var event = ('ontouchstart' in window) ? 'touchstart' : 'click';
+
+		document.querySelectorAll('ul.mainmenu.l1 > li > a').forEach(function(a) {
+			a.addEventListener(event, function(ev) {
+				var a = ev.target, ul1 = a.parentNode.parentNode, ul2 = a.nextElementSibling;
+
+				document.querySelectorAll('ul.mainmenu.l1 > li.active').forEach(function(li) {
+					if (li !== a.parentNode)
+						li.classList.remove('active');
+				});
+
+				if (!ul2)
+					return;
+
+				if (ul2.parentNode.offsetLeft + ul2.offsetWidth <= ul1.offsetLeft + ul1.offsetWidth)
+					ul2.classList.add('align-left');
+
+				ul1.classList.add('active');
+				a.parentNode.classList.add('active');
+				a.blur();
+
+				ev.preventDefault();
+				ev.stopPropagation();
+			});
+		});
+
+		document.addEventListener(event, function(ev) {
+			var t = ev.target;
+
+			while (t && t.id != 'mainmenu')
+				t = t.parentNode;
+
+			if (!t)
+				document.querySelectorAll('ul.mainmenu > li.active').forEach(function(li) {
+					li.classList.remove('active');
+				});
+		});
+	});
+//]]></script>
 <title><%=striptags( hostname .. ( (node and node.title) and ' - ' .. translate(node.title)or '')) %> - LuCI</title>
 </head>
 <body class="lang_<%=luci.i18n.context.lang%>">
@@ -128,9 +172,6 @@ require("luci.http").prepare_content("application/xhtml+xml")
 
 <div class="hostinfo">
 			<%=luci.version.distversion%><br />
-			<%:Hostname%>: <%=hostname%>
-			<%:Load%>: <%="%.2f" % (loadinfo[1] / 65535.0)%> <%="%.2f" % (loadinfo[2] / 65535.0)%> <%="%.2f" % (loadinfo[3] / 65535.0)%><br />
-			<%:Model%>: <%=pcdata(boardinfo.model or boardinfo.system or "?")%> <br />
 </div>
 
 <ul id="modemenu"><%

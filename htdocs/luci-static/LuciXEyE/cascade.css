@@ -35,6 +35,44 @@ body {
 
 }
 
+.table { display: table; width: 100%; position: relative; }
+.tr { display: table-row; }
+.thead { display: table-header-group; }
+.tbody { display: table-row-group; }
+.tfoot { display: table-footer-group; }
+.td, .th { display: table-cell; }
+.th { font-weight: bold; }
+
+.table[width="33%"], .th[width="33%"], .td[width="33%"] { width: 33%; }
+.table[width="100%"], .th[width="100%"], .td[width="100%"] { width: 100%; }
+
+.col-1 { flex: 1 1 30px !important; -webkit-flex: 1 1 30px !important; }
+.col-2 { flex: 2 2 60px !important; -webkit-flex: 2 2 60px !important; }
+.col-3 { flex: 3 3 90px !important; -webkit-flex: 3 3 90px !important; }
+.col-4 { flex: 4 4 120px !important; -webkit-flex: 4 4 120px !important; }
+.col-5 { flex: 5 5 150px !important; -webkit-flex: 5 5 150px !important; }
+.col-6 { flex: 6 6 180px !important; -webkit-flex: 6 6 180px !important; }
+.col-7 { flex: 7 7 210px !important; -webkit-flex: 7 7 210px !important; }
+.col-8 { flex: 8 8 240px !important; -webkit-flex: 8 8 240px !important; }
+.col-9 { flex: 9 9 270px !important; -webkit-flex: 9 9 270px !important; }
+.col-10 { flex: 10 10 300px !important; -webkit-flex: 10 10 300px !important; }
+
+.tr.placeholder {
+	height: 3.5em;
+}
+
+.tr.placeholder > .td {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+	line-height: 3em;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
 #logo
 {
 	font-size:40px;
@@ -61,9 +99,10 @@ small {
 	width: 200px;
 	
 }
+
 ul.tabmenu {
 	width: 200px;
-	hight: 100%;
+	height: 100%;
 	float:left;
 	clear: both;
 	display: block;
@@ -194,6 +233,24 @@ div.hostinfo {
 	display:block;
 	font-size: 12px;
 	padding: 5px;
+}
+
+.lang_he div.hostinfo {
+	float: right;
+}
+
+#xhr_poll_status {
+	cursor: pointer;
+}
+
+#xhr_poll_status #xhr_poll_status_off {
+	font-weight: bold;
+	color: #FF0000;
+}
+
+#xhr_poll_status #xhr_poll_status_on {
+	font-weight: bold;
+	color: #00FF00;
 }
 
 #menubar {
@@ -411,20 +468,31 @@ input[type=password] {
 	width: 20em;
 }
 
+.cbi-value-field .cbi-button {
+
+
+
+	display: inline-block;
+
+
+	line-height: 13pt;
+	
+}
+
 td select,
 td input[type=text],
 td input[type=password] {
 	width: 80%;
 }
 
-input.cbi-input-user {
+.cbi-input-user {
 	background: url('../resources/cbi/user.gif') no-repeat scroll 1px center;
 	background-color: inherit;
 	color: #000000;
 	text-indent: 17px;
 }
 
-input.cbi-input-password {
+.cbi-input-password {
 	background: url('../resources/cbi/key.gif') no-repeat scroll 1px center;
 	background-color: inherit;
 	color: #000000;
@@ -432,22 +500,22 @@ input.cbi-input-password {
 
 }
 
-input.cbi-input-find {
+.cbi-input-find {
 	background: url('../resources/cbi/find.gif') no-repeat scroll 1px center;
 	background-color: inherit;
 	color: #000000;
 	padding-left: 17px;
 }
 
-input.cbi-input-reload {
+.cbi-input-reload {
 	background: url('../resources/cbi/reload.gif') no-repeat scroll 1px center;
 	background-color: inherit;
 	color: #000000;
 	padding-left: 17px;
 }
 
-input.cbi-input-add,
-input.cbi-button-add {
+.cbi-input-add,
+.cbi-button-add {
 	background: url('../resources/cbi/add.gif') no-repeat scroll 1px center;
 	background-color: inherit;
 	color: #000000;
@@ -455,8 +523,8 @@ input.cbi-button-add {
 	padding-right: 1px;
 }
 
-input.cbi-input-fieldadd,
-input.cbi-button-fieldadd {
+.cbi-input-fieldadd,
+.cbi-button-fieldadd {
 	background: url(../resources/cbi/fieldadd.gif) no-repeat scroll 1px center;
 	background-color: inherit;
 	color: #000000;
@@ -464,8 +532,8 @@ input.cbi-button-fieldadd {
 	padding-right: 1px;
 }
 
-input.cbi-input-reset,
-input.cbi-button-reset {
+.cbi-input-reset,
+.cbi-button-reset {
 	background: url('../resources/cbi/reset.gif') no-repeat scroll 1px center;
 	background-color: inherit;
 	color: #000000;
@@ -473,8 +541,8 @@ input.cbi-button-reset {
 	padding-right: 1px;
 }
 
-input.cbi-input-save,
-input.cbi-button-save {
+.cbi-input-save,
+.cbi-button-save {
 	background: url('../resources/cbi/save.gif') no-repeat scroll 1px center;
 	background-color: inherit;
 	color: #000000;
@@ -482,8 +550,8 @@ input.cbi-button-save {
 	padding-right: 1px;
 }
 
-input.cbi-input-apply,
-input.cbi-button-apply {
+.cbi-input-apply,
+.cbi-button-apply {
 	background: url('../resources/cbi/apply.gif') no-repeat scroll 1px center;
 	background-color: inherit;
 	color: #000000;
@@ -491,8 +559,8 @@ input.cbi-button-apply {
 	padding-right: 1px;
 }
 
-input.cbi-input-link,
-input.cbi-button-link {
+.cbi-input-link,
+.cbi-button-link {
 	background: url('../resources/cbi/link.gif') no-repeat scroll 1px center;
 	background-color: inherit;
 	color: #000000;
@@ -500,8 +568,9 @@ input.cbi-button-link {
 	padding-right: 1px;
 }
 
-input.cbi-input-remove,
-div.cbi-section-remove input {
+.cbi-input-remove,
+.cbi-section-remove,
+.cbi-button-remove {
 	background: url('../resources/cbi/remove.gif') no-repeat scroll 1px center;
 	background-color: inherit;
 	color: #000000;
@@ -526,8 +595,7 @@ textarea {
 	margin-bottom: 0.5em;
 }
 
-form > div > input[type=submit],
-form > div > input[type=reset] {
+.cbi-page-actions .cbi-button {
 	float: right;
 	margin-left: 0.5em;
 }
@@ -537,7 +605,12 @@ table th {
 	color: #000000;
 }
 
-table.smalltext {
+.table .td, .table .th {
+	color: #000000;
+	padding: .25em;
+}
+
+.table.smalltext {
 	background: #f5f5f5;
 	color: #000000;
 	border-top: 1px solid #666666;
@@ -550,31 +623,29 @@ table.smalltext {
 	border-collapse: collapse;
 }
 
-table.smalltext tr:hover td {
+.table.smalltext .tr:hover .td {
 	background-color: #bbddee;
 	color: #000000;
 }
 
-table.smalltext tr th {
+.table.smalltext .tr .th {
 	padding: 0 0.25em;
 	border-left: 1px solid #666666;
 	text-align: left;
 }
 
-table.smalltext tr td {
+.table.smalltext .tr .td {
 	padding: 0 0.25em;
 	border-top: 1px solid #666666;
 	border-left: 1px solid #666666;
 }
 
-table.cbi-section-table .cbi-rowstyle-1,
-table.cbi-section-table .cbi-rowstyle-1>* {
-	background-color: #eeeeff;
+.cbi-rowstyle-1 {
 	color: #000000;
 }
 
 .cbi-section .cbi-rowstyle-1 h3 {
-	background-color: #eeeeff;
+	background-color: #ffffff;
 	color: #555555;
 }
 
@@ -606,15 +677,23 @@ div.cbi-value:hover {
 	padding-left:5px;
 }
 
-div.cbi-value-field {
+.cbi-value-field {
 	float:left;
 	width: 70%;
 	margin-left: 0;
 	padding: 0.25em 0;
 }
-
+.td.cbi-value-field {
+	width: auto;
+	margin-left: 0;
+	align-self: center;
+	vertical-align: middle;
+}
 
 div.cbi-value-description {
+	background-image: url(/luci-static/resources/cbi/help.gif);
+	background-position: .25em .25em;
+	background-repeat: no-repeat;
 	font-size: 90%;
 	display: inline;
 }
@@ -668,22 +747,24 @@ div.cbi-section-remove {
 	margin: 0.25em;
 }
 
-table.cbi-section-table {
+.table.cbi-section-table {
 	width: 100%;
 	font-size: 95%;
 }
 
-table.cbi-section-table th,
-table.cbi-section-table td {
+.table.cbi-section-table .th,
+.table.cbi-section-table .td {
 	text-align: center;
 }
 
-tr.cbi-section-table-descr th {
+.tr.cbi-section-table-descr .th {
 	font-weight: normal;
 	font-size: 90%;
 }
 
-td.cbi-section-table-optionals {
+
+
+.td.cbi-section-table-optionals {
 	text-align: left !important;
 	padding-top: 1em;
 }
@@ -699,7 +780,7 @@ div.cbi-error {
 	background-color: #ffffff;
 }
 
-td.cbi-value-error {
+.td.cbi-value-error {
 	border-color: red;
 }
 
@@ -772,6 +853,47 @@ div.cbi-tab-descr {
 	text-align: right;
 }
 
+.zonebadge .cbi-tooltip {
+	padding: 1px;
+	background: inherit;
+	margin: -1.6em 0 0 -5px;
+}
+
+
+.zone-forwards {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.zone-forwards > * {
+	flex: 1 1 45%;
+	padding: 1px;
+}
+
+.zone-forwards > span {
+	flex-basis: 10%;
+	text-align: center;
+}
+
+.zone-forwards .zone-src,
+.zone-forwards .zone-dest {
+	display: flex;
+	flex-direction: column;
+}
+
+
+.left, .left::before, .left::after { text-align: left !important; }
+.right, .right::before, .right::after { text-align: right !important; }
+.center, .center::before, .center::after { text-align: center !important; }
+
+.top, .top::before, .top::after { vertical-align: top !important; }
+.middle, .middle::before, .middle::after { vertical-align: middle !important; }
+.bottom, .bottom::before, .bottom::after { vertical-align: bottom !important; }
+
+.td.top { align-self: flex-start; vertical-align: top; }
+.td.middle { align-self: center; vertical-align: middle; }
+.td.bottom { align-self: flex-end; vertical-align: bottom; }
+
 .luci {
 	position: fixed;
 	bottom: 0;
@@ -805,6 +927,143 @@ div.cbi-tab-descr {
 	padding: 5px;
 	margin-bottom: 5px;
 }
+
+.ifacebadge, .ifacebox {
+	display: inline-flex;
+	align-content: center;
+	padding: 2px;
+	background: #fff;
+}
+
+.ifacebox-head {
+	background: #eee;
+}
+
+.ifacebox-head.active {
+	background: #90c0e0;
+}
+
+.ifacebadge, .zonebadge {
+	align-items: center;
+}
+
+.ifacebadge > * {
+	align-self: flex-start;
+}
+
+.ifacebadge > img,
+.ifacebadge > em {
+	margin-right: 5px;
+	display: inline-block;
+	height: 16px;
+}
+
+.ifacebadge-active {
+	border-color: #000000;
+	font-weight: bold;
+}
+
+.ifacebox {
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+	min-width: 100px;
+	text-align: center;
+}
+
+.ifacebox > * {
+	padding: 2px;
+}
+
+.td > .ifacebadge,
+.td > .zonebadge {
+	margin: 0;
+	vertical-align: top;
+}
+
+.network-status-table {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -.25em -.25em .25em -.25em;
+}
+
+.network-status-table .ifacebox {
+	margin: .25em;
+	font-size: 90%;
+	flex-grow: 1;
+}
+
+.network-status-table .ifacebox-body {
+	display: flex;
+	flex-direction: column;
+	flex: 1 0 auto;
+	padding: .5em;
+}
+
+.network-status-table .ifacebox-body > span {
+	flex: 10 10 auto;
+}
+
+.network-status-table .ifacebox-body > div {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.ifacebadge.large,
+.network-status-table .ifacebox-body .ifacebadge {
+	flex: 1;
+	-webkit-flex: 1 1 auto;
+	padding: .5em;
+	min-width: 220px;
+	white-space: nowrap;
+}
+
+.network-status-table .ifacebox-body .ifacebadge {
+	margin: .5em 0 0 0;
+}
+
+#dsl_status_table .ifacebox-body > span > strong {
+	display: inline-block;
+	min-width: 35%;
+}
+
+
+.zonebadge {
+	padding: 2px;
+	display: inline-block;
+	white-space: nowrap;
+	border-radius: 3px;
+}
+
+.zonebadge > em,
+.zonebadge > strong {
+	margin: 3px;
+}
+
+.zonebadge input {
+	width: 6em;
+	height: 1.5em;
+}
+
+.zonebadge .ifacebadge,
+.cbi-dropdown .ifacebadge {
+	margin: 1px;
+}
+
+.zonebadge .ifacebadge img,
+.zonebadge .ifacebadge em,
+.cbi-dropdown .ifacebadge img,
+.cbi-dropdown .ifacebadge em {
+	margin: 0 1px;
+}
+
+.zonebadge-empty {
+	border: 1px dashed #AAAAAA;
+	color: #AAAAAA;
+	font-style: italic;
+	font-size: smaller;
+}
+
 
 .uci-change-list {
 	font-family: monospace;
