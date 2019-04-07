@@ -128,9 +128,6 @@ require("luci.http").prepare_content("application/xhtml+xml")
 
 <div class="hostinfo">
 			<%=luci.version.distversion%><br />
-			<%:Hostname%>: <%=hostname%>
-			<%:Load%>: <%="%.2f" % (loadinfo[1] / 65535.0)%> <%="%.2f" % (loadinfo[2] / 65535.0)%> <%="%.2f" % (loadinfo[3] / 65535.0)%><br />
-			<%:Model%>: <%=pcdata(boardinfo.model or boardinfo.system or "?")%> <br />
 </div>
 
 <ul id="modemenu"><%

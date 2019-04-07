@@ -21,7 +21,7 @@ body {
 }
 
 #bodydiv {
-	margin:0 70px 0 70px;
+	margin:0 20px 0 20px;
 	background:white;
 	overflow:hidden;
 }
@@ -125,7 +125,7 @@ acronym {
 
 abbr[title],
 acronym[title] {
-	border-bottom: 1px dotted;
+	border-bottom: 1px solid;
 	cursor: help;
 }
 
@@ -320,7 +320,7 @@ textarea#syslog {
 .cbi-section {
 	margin-bottom: 0.5em;
 	padding: 0.5em 1em;
-	border: 1px dotted #555555;
+	border: 1px solid #aaaaaa;
 	background-color: #ffffff;
 	color: #000000;
 }
@@ -429,17 +429,18 @@ input.cbi-input-password {
 	background-color: inherit;
 	color: #000000;
 	text-indent: 17px;
-
 }
 
-input.cbi-input-find {
+input.cbi-input-find,
+input.cbi-button-find {
 	background: url('../resources/cbi/find.gif') no-repeat scroll 1px center;
 	background-color: inherit;
 	color: #000000;
 	padding-left: 17px;
 }
 
-input.cbi-input-reload {
+input.cbi-input-reload,
+input.cbi-button-reload {
 	background: url('../resources/cbi/reload.gif') no-repeat scroll 1px center;
 	background-color: inherit;
 	color: #000000;
@@ -500,7 +501,32 @@ input.cbi-button-link {
 	padding-right: 1px;
 }
 
+input.cbi-button-edit {
+	background: url('../resources/cbi/edit.gif') no-repeat scroll 1px center;
+	background-color: inherit;
+	color: #000000;
+	padding-left: 17px;
+	padding-right: 1px;
+}
+
+input.cbi-button-up {
+	background: url('../resources/cbi/up.gif') no-repeat scroll 1px center;
+	background-color: inherit;
+	color: #000000;
+	padding-left: 17px;
+	padding-right: 1px;
+}
+
+input.cbi-button-down {
+	background: url('../resources/cbi/down.gif') no-repeat scroll 1px center;
+	background-color: inherit;
+	color: #000000;
+	padding-left: 17px;
+	padding-right: 1px;
+}
+
 input.cbi-input-remove,
+input.cbi-button-remove,
 div.cbi-section-remove input {
 	background: url('../resources/cbi/remove.gif') no-repeat scroll 1px center;
 	background-color: inherit;
@@ -522,6 +548,7 @@ div.cbi-section-remove input {
 }
 
 textarea {
+	font-family: Consolas, Menlo, 'Courier New', Courier, monospace;
 	margin-left: -1px;
 	margin-bottom: 0.5em;
 }
@@ -588,7 +615,7 @@ div.cbi-value {
 	overflow:auto;
 	vertical-align: middle;
 	padding: 0em;
-	border-bottom: 1px dotted #bbbbbb;
+	border-bottom: 1px solid #bbbbbb;
 	height:auto;
 }
 
@@ -626,7 +653,7 @@ div.cbi-section-create {
 }
 
 div.cbi-tblsection-create {
-	border-bottom: 1px dotted #bbbbbb;
+	border-bottom: 1px solid #bbbbbb;
 }
 
 div.cbi-section-create .cbi-button {
@@ -643,7 +670,7 @@ div.cbi-map-descr {
 
 div.cbi-optionals {
 	padding: 0.25em;
-	border-bottom: 1px dotted #bbbbbb;
+	border-bottom: 1px solid #bbbbbb;
 }
 
 div.cbi-section-remove {
@@ -652,9 +679,9 @@ div.cbi-section-remove {
 
 .cbi-section-node {
 	clear: both;
-	border-top: 1px dotted #bbbbbb;
-	border-left: 1px dotted #bbbbbb;
-	border-right: 1px dotted #bbbbbb;
+	border-top: 1px solid #bbbbbb;
+	border-left: 1px solid #bbbbbb;
+	border-right: 1px solid #bbbbbb;
 	border-bottom: none;
 	padding-bottom: 0;
 }
@@ -713,13 +740,13 @@ td.cbi-value-error {
 	color: red;
 	background-color: white;
 	font-size: 95%;
-	border: 1px dotted red;
+	border: 1px solid red;
 	margin: 3px;
 	padding: 3px;
 }
 
 ul.cbi-tabmenu {
-	padding: 3px 0;
+	padding: 5px 0;
 	margin-left: 0 !important;
 	margin-bottom: -1px;
 	list-style-type: none;
@@ -793,7 +820,7 @@ div.cbi-tab-descr {
 
 .error500 {
 	white-space: normal;
-	border: 1px dotted #ff0000;
+	border: 1px solid #ff0000;
 	background-color: #ffffff;
 	color: #000000;
 	padding: 0.5em;
